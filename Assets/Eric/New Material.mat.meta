@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Eric/New Material.mat.meta
 guid: 26986163c456dd44b840731da2301bfd
 NativeFormatImporter:
+=======
+guid: dbc0285f467189842b71a513bd3b1d8b
+folderAsset: yes
+DefaultImporter:
+>>>>>>> d6559545ee21472ee073d64aabac2f1cce7a35f9:Assets/Logan.meta
   externalObjects: {}
   mainObjectFileID: 2100000
   userData: 
