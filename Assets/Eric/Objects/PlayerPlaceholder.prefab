@@ -112,6 +112,7 @@ MonoBehaviour:
   xVel: 0
   zVel: 0
   spd: 4
+  sameSpeed: 0
 --- !u!54 &909071872487995941
 Rigidbody:
   m_ObjectHideFlags: 0
