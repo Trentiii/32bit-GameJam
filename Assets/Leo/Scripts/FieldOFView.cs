@@ -36,11 +36,15 @@ public class FieldOFView : MonoBehaviour
         RaycastHit hit;
 
 
-        Debug.DrawLine(cam.transform.position, Vector3.RotateTowards(cam.transform.position, player.transform.position, Mathf.Deg2Rad * 30, 0), Color.green);
+        //Debug.DrawLine(cam.transform.position, Vector3.RotateTowards(cam.transform.position, player.transform.position, Mathf.Deg2Rad * 30, 0), Color.green);
+
+        Debug.DrawRay(cam.transform.position, -(cam.transform.position - player.transform.position), Color.green);
 
         Vector3.RotateTowards(cam.transform.position, player.transform.position, Mathf.Deg2Rad * 30, 0);
 
-        if (Physics.Raycast(cam.transform.position, transform.forward, out hit, 10))
+        
+
+        if (Physics.Raycast(cam.transform.position, -(cam.transform.position - player.transform.position), out hit, 10))
         {
             if (hit.collider.gameObject.tag != "Wall")
             {
@@ -54,20 +58,5 @@ public class FieldOFView : MonoBehaviour
             Debug.Log("Chase");
         }
 
-
-
-        /*if (Physics.Raycast(cam.transform.position, transform.forward, out hit, 10))
-        {
-            if (hit.collider.gameObject.tag != "Wall" )
-            {
-                Debug.Log("Chase");
-            }
-
-
-        }
-        else
-        {
-            Debug.Log("Chase");
-        }*/
     }
 }
