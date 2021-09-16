@@ -1,16 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerAttack : MonoBehaviour
+public class BodyDisposal : MonoBehaviour
 {
-    public GameObject enemy;
-    public bool inRange;
     public GameObject indicator;
     public GameObject nonIND;
-    public enemyDies ED;
-
+    public bool inRange;
+    // Start is called before the first frame update
     private void Start()
     {
         indicator = GameObject.FindWithTag("IMG1");
@@ -25,10 +22,11 @@ public class PlayerAttack : MonoBehaviour
             nonIND.SetActive(false);
             if (Input.GetKeyDown(KeyCode.E))
             {
+
                 
-                ED.isDead = true;
                 
                 nonIND.SetActive(true);
+                Destroy(gameObject);
             }
         }
         else
@@ -36,22 +34,22 @@ public class PlayerAttack : MonoBehaviour
             
             nonIND.SetActive(true);
         }
-        
-        
+
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             inRange = true;
         }
-        
+
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             inRange = false;
         }

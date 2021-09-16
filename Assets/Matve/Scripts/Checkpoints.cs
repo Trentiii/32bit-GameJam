@@ -8,6 +8,8 @@ public class Checkpoints : MonoBehaviour
     public GameObject player;
     PlayerDeath PD;
     public bool activated;
+    public float timer;
+    public float maxTime = 30;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,17 @@ public class Checkpoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (activated)
+        {
+            if(timer <= maxTime)
+            {
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                activated = false;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
