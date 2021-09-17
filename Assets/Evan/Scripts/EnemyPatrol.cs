@@ -23,7 +23,7 @@ public class EnemyPatrol : MonoBehaviour
     //[HideInInspector]
     public bool chasing = true;
 
-
+    bool resetNeeded = false; //Holds if patrol reset is needed
     bool firstHalf = true; //Holds if frist half a patrol loop
     int currentPoint = 0; //Holds current wanted loop
 
@@ -36,6 +36,7 @@ public class EnemyPatrol : MonoBehaviour
         navA = GetComponent<NavMeshAgent>();
         navA.destination = partolPoint[currentPoint].transform.position;
 
+        //Logs errors for movement settings
         if (!backForthMovement && !circleMovement)
         {
             Debug.LogError("No movement mode selected");
@@ -49,13 +50,38 @@ public class EnemyPatrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //If chasing
         if (chasing)
         {
+            //Set destintation to player
             navA.destination = player.position;
+            resetNeeded = true;
         }
         else
         {
+            //If reset needeed
+            if (resetNeeded)
+            {
+                //Find closetest patrol point
+                currentPoint = 0;
+                float distance = 9999;
+
+                for (int i = 0; i < partolPoint.Length; i++)
+                {
+                    if (Vector3.Distance(partolPoint[i].transform.position, transform.position) < distance)
+                    {
+                        distance = Vector3.Distance(partolPoint[i].transform.position, transform.position);
+                        currentPoint = i;
+                    }
+                }
+
+                resetNeeded = false;
+            }
+
+
+            //Set current point to postition
             navA.destination = partolPoint[currentPoint].transform.position;
+            
 
             //If enemy has reached patrol point
             if (Vector3.Distance(transform.position, partolPoint[currentPoint].transform.position) <= 0.5)
