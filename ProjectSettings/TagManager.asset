@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Checkpoint
+  - IMG1
+  - IMG2
   layers:
   - Default
   - TransparentFX
