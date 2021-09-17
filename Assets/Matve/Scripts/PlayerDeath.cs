@@ -6,7 +6,7 @@ public class PlayerDeath : MonoBehaviour
 {
     public bool debugDeath;
     public bool playerDead;
-    playerMovement PM;
+    PlayerMovement PM;
     public GameObject model1;
     public GameObject model2;
     public GameObject checkpoint;
@@ -17,7 +17,7 @@ public class PlayerDeath : MonoBehaviour
     void Start()
     {
         
-        PM = GetComponent<playerMovement>();
+        PM = GetComponent<PlayerMovement>();
         playerDead = false;
     }
 
