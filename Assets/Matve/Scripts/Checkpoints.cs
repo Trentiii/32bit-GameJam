@@ -7,7 +7,10 @@ public class Checkpoints : MonoBehaviour
     public GameObject Cindicator;
     public GameObject player;
     PlayerDeath PD;
+    public bool spawnPoint;
     public bool activated;
+    public bool oneUse;
+    public bool used;
     public float timer;
     public float maxTime = 30;
 
@@ -40,13 +43,39 @@ public class Checkpoints : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            
-            if (!activated)
+            if (!oneUse)
             {
-                Instantiate(Cindicator);
+                PD.checkpoint = gameObject;
+                if (!spawnPoint)
+                {
+                    if (!activated)
+                    {
+                        Instantiate(Cindicator);
+                    }
+
+                    activated = true;
+                }
             }
-            PD.checkpoint = gameObject;
-            activated = true;
+            else
+            {
+                if (!used)
+                {
+                    PD.checkpoint = gameObject;
+                    if (!spawnPoint)
+                    {
+                        if (!activated)
+                        {
+                            Instantiate(Cindicator);
+                        }
+
+                        activated = true;
+                        
+                    }
+                    used = true;
+                }
+            }
+            
+            
         }
     }
 }
