@@ -88,10 +88,10 @@ public class PlayerMovement : MonoBehaviour
             {
 
             }
-
+            
             Vector3 smoothedRotation = Vector3.Slerp(currentRotation, new Vector3(0, newRotZ, 0), smoothing * Time.deltaTime);
 
-            transform.rotation = Quaternion.Euler(smoothedRotation);
+            transform.rotation = Quaternion.Lerp(Quaternion.LookRotation(transform.localRotation), new Quaternion(0, rotZ, 0, 0), smoothing * Time.deltaTime);
             Debug.Log(smoothedRotation);
         }
 
