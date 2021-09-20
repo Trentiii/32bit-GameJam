@@ -8,7 +8,9 @@ public class EnemyPatrol : MonoBehaviour
 {
 
     [SerializeField]
-    GameObject[] partolPoint = new GameObject[5]; //Holds all patrol points
+    Transform patrolPointParent;
+
+    GameObject[] patrolPoint; //Holds all patrol points
 
     [SerializeField]
     [Tooltip("If true moves back and forth through the point array")]
@@ -33,8 +35,11 @@ public class EnemyPatrol : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        SetPatrolPoints();
+
         navA = GetComponent<NavMeshAgent>();
-        navA.destination = partolPoint[currentPoint].transform.position;
+        navA.destination = patrolPoint[currentPoint].transform.position;
 
         //Logs errors for movement settings
         if (!backForthMovement && !circleMovement)
@@ -45,6 +50,8 @@ public class EnemyPatrol : MonoBehaviour
         {
             Debug.LogError("To many movement modes selected");
         }
+
+        
     }
 
     // Update is called once per frame
@@ -66,11 +73,11 @@ public class EnemyPatrol : MonoBehaviour
                 currentPoint = 0;
                 float distance = 9999;
 
-                for (int i = 0; i < partolPoint.Length; i++)
+                for (int i = 0; i < patrolPoint.Length; i++)
                 {
-                    if (Vector3.Distance(partolPoint[i].transform.position, transform.position) < distance)
+                    if (Vector3.Distance(patrolPoint[i].transform.position, transform.position) < distance)
                     {
-                        distance = Vector3.Distance(partolPoint[i].transform.position, transform.position);
+                        distance = Vector3.Distance(patrolPoint[i].transform.position, transform.position);
                         currentPoint = i;
                     }
                 }
@@ -80,17 +87,17 @@ public class EnemyPatrol : MonoBehaviour
 
 
             //Set current point to postition
-            navA.destination = partolPoint[currentPoint].transform.position;
+            navA.destination = patrolPoint[currentPoint].transform.position;
             
 
             //If enemy has reached patrol point
-            if (Vector3.Distance(transform.position, partolPoint[currentPoint].transform.position) <= 0.5)
+            if (Vector3.Distance(transform.position, patrolPoint[currentPoint].transform.position) <= 0.5)
             {
                 //If moving through the points in the first half
                 if (firstHalf)
                 {
                     //If havent reached end
-                    if (currentPoint < partolPoint.Length - 1)
+                    if (currentPoint < patrolPoint.Length - 1)
                     {
                         currentPoint++; //Move to next point
                     }
@@ -118,6 +125,16 @@ public class EnemyPatrol : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    void SetPatrolPoints()
+    {
+        patrolPoint = new GameObject[patrolPointParent.childCount];
+
+        for (int i = 0; i < patrolPoint.Length; i++)
+        {
+            patrolPoint[i] = patrolPointParent.GetChild(i).gameObject;
         }
     }
 }
