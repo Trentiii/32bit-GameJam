@@ -12,6 +12,7 @@ public class WinCondition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
         PM = player.GetComponent<PlayerMovement>();
     }
 
