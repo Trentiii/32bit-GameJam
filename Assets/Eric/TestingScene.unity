@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 1862919790}
   - component: {fileID: 1862919789}
   - component: {fileID: 1862919788}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

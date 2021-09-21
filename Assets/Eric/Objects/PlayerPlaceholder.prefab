@@ -114,6 +114,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   sameSpeed: 1
+  mouseSpeed: 5
   smoothing: 8
 --- !u!54 &909071872487995941
 Rigidbody:
