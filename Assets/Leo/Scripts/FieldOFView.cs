@@ -8,12 +8,14 @@ public class FieldOFView : MonoBehaviour
     public Collider PlayerColl;
     public Camera cam;
     private Plane[] planes;
+    private EnemyPatrol enemyScript;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        enemyScript = gameObject.GetComponent<EnemyPatrol>();
     }
 
     // Update is called once per frame
@@ -22,7 +24,7 @@ public class FieldOFView : MonoBehaviour
         planes = GeometryUtility.CalculateFrustumPlanes(cam);
         if (GeometryUtility.TestPlanesAABB(planes, PlayerColl.bounds))
         {
-            Debug.Log("Player in range");
+            //Debug.Log("Player in range");
             CheckforPlayer();
         }
         else
@@ -48,14 +50,16 @@ public class FieldOFView : MonoBehaviour
         {
             if (hit.collider.gameObject.tag != "Wall")
             {
-                Debug.Log("Chase");
+                //Debug.Log("Chase");
+                enemyScript.chasing = true;
             }
 
 
         }
         else
         {
-            Debug.Log("Chase");
+            //Debug.Log("Chase");
+            enemyScript.chasing = true;
         }
 
     }
