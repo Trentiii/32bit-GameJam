@@ -23,7 +23,7 @@ public class EnemyPatrol : MonoBehaviour
     public Transform player;
 
     //[HideInInspector]
-    public bool chasing = true;
+    public bool chasing = false;
 
     bool resetNeeded = false; //Holds if patrol reset is needed
     bool firstHalf = true; //Holds if frist half a patrol loop
