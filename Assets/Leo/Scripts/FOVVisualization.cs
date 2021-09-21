@@ -32,21 +32,21 @@ public class FOVVisualization : MonoBehaviour
 	}
 
 
-	IEnumerator FindTargetsWithDelay(float delay)
+	/*IEnumerator FindTargetsWithDelay(float delay)
 	{
 		while (true)
 		{
 			yield return new WaitForSeconds(delay);
 			FindVisibleTargets();
 		}
-	}
+	}*/
 
 	void LateUpdate()
 	{
 		DrawFieldOfView();
 	}
 
-	void FindVisibleTargets()
+	/*void FindVisibleTargets()
 	{
 		visibleTargets.Clear();
 		Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
@@ -64,7 +64,7 @@ public class FOVVisualization : MonoBehaviour
 				}
 			}
 		}
-	}
+	}*/
 
 	void DrawFieldOfView()
 	{
