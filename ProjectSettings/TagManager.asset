@@ -6,6 +6,12 @@ TagManager:
   tags: 
   - Enemy
   - Wall
+  - Checkpoint
+  - IMG1
+  - IMG2
+  - HidingSpot
+  - IND3
+  - IND4
   layers:
   - Default
   - TransparentFX

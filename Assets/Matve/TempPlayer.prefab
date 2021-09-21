@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 232782411132187745}
   - component: {fileID: 4702723978736662450}
-  - component: {fileID: 4702723978736662453}
   - component: {fileID: 8407804752870878157}
+  - component: {fileID: 3886020896717091356}
+  - component: {fileID: 3886020896717091357}
   m_Layer: 0
   m_Name: TempPlayer
   m_TagString: Player
@@ -54,21 +55,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &4702723978736662453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181670331932605781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0d7bc6d96ba83f4ba66dc03c6a58bce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 4702723978736662450}
-  speed: 12
-  gravity: -9.81
 --- !u!114 &8407804752870878157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +75,40 @@ MonoBehaviour:
   timer: 0
   respawntime: 1
   player: {fileID: 181670331932605781}
+--- !u!114 &3886020896717091356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181670331932605781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51624cab1fc672c41a5526efbfa64053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xVel: 0
+  zVel: 0
+  spd: 4
+  sameSpeed: 0
+--- !u!114 &3886020896717091357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181670331932605781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4589bd089abfd14439dc6a6f371aeb3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHiding: 0
+  canHide: 0
+  IND3: {fileID: 0}
+  IND4: {fileID: 0}
+  playerModel: {fileID: 4702723978151650445}
+  PM: {fileID: 3886020896717091356}
 --- !u!1 &274828502102741312
 GameObject:
   m_ObjectHideFlags: 0
