@@ -28,6 +28,8 @@ public class FOVVisualization : MonoBehaviour
 		viewMesh.name = "View Mesh";
 		viewMeshFilter.mesh = viewMesh;
 
+	
+
 		//StartCoroutine("FindTargetsWithDelay", .2f);
 	}
 
@@ -122,6 +124,8 @@ public class FOVVisualization : MonoBehaviour
 		viewMesh.vertices = vertices;
 		viewMesh.triangles = triangles;
 		viewMesh.RecalculateNormals();
+
+	
 	}
 
 
