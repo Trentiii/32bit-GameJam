@@ -1139,11 +1139,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: 87075e3a7f8ea9b4c88df1f0137d0178, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-=======
   m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -1155,7 +1150,6 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
->>>>>>> d1d7008ac5ea055c5a081315288220ec9eee3a46
 --- !u!1 &1495965017
 GameObject:
   m_ObjectHideFlags: 0
