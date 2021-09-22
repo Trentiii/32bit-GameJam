@@ -124,6 +124,7 @@ public class FOVVisualization : MonoBehaviour
 		viewMesh.vertices = vertices;
 		viewMesh.triangles = triangles;
 		viewMesh.RecalculateNormals();
+		
 
 	
 	}
