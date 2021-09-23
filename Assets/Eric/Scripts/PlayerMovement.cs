@@ -4,26 +4,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Dictionary<string, Vector3> Facing = new Dictionary<string, Vector3> {
-        { "Forward"       , new Vector3( 0, 0, 1)},
-        { "Forward_Right" , new Vector3( 1, 0, 1)},
-        { "Right"         , new Vector3( 1, 0, 0)},
-        { "Back_Right"    , new Vector3( 1, 0,-1)},
-        { "Back"          , new Vector3( 0, 0,-1)},
-        { "Back_Left"     , new Vector3(-1, 0,-1)},
-        { "Left"          , new Vector3(-1, 0, 0)},
-        { "Forward_Left"  , new Vector3(-1, 0, 1)},
-    };
-    private enum mode { Mouse_Drag, Keyboard_Lerp, Normal};
+    private enum mode { Mouse_Drag, Keyboard_Lerp, Normal, Weird};
     [SerializeField] private mode MovementMode;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private bool sameSpeed = false;
-
+    Rigidbody rb;
+    public float mouseSpeed = 0f;
     private float xVel = 0f;
     private float zVel = 0f;
     private float oldZVel = 0f;
     private float oldXVEL = 0f;
-    private float spd  = 4f;
+    private float spd  = 5f;
     public float smoothing = 3f;
 
     
@@ -31,12 +22,15 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = gameObject.GetComponent<Rigidbody>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
         xVel = Input.GetAxisRaw("Horizontal");
         zVel = Input.GetAxisRaw("Vertical");
 
@@ -45,20 +39,26 @@ public class PlayerMovement : MonoBehaviour
 
         switch (MovementMode)
         {
-            case mode.Normal:
-                Normal();
-                break;
             case mode.Keyboard_Lerp:
                 Keyboard_Lerp();
                 break;
             case mode.Mouse_Drag:
                 Mouse_Dragging();
                 break;
+            case mode.Weird:
+                Weird();
+                break;
             default:
-                Debug.Log("Movement mode Error (Ask Eric)");
+                Debug.LogError("Movement mode Error (Ask Eric)");
                 break;
         }
         Debug.DrawLine(transform.position, transform.position + transform.forward * 3, Color.red);
+    }
+
+    private void FixedUpdate()
+    {
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 
     private void Keyboard_Lerp()
@@ -70,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
             if (!sameSpeed)
                 this.transform.position += new Vector3(xVel, 0, zVel) * (spd * Time.deltaTime);
 
+<<<<<<< HEAD
 
             //Quaternion.LookRotation(new Vector3(0, zVel, 0));
 
@@ -91,6 +92,31 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 cR = transform.localRotation.eulerAngles;
             transform.rotation = Quaternion.Lerp(Quaternion.LookRotation(cR), Quaternion.LookRotation(new Vector3(0, zVel, 0)), smoothing * Time.deltaTime);
+=======
+            float rotZ = Mathf.Atan2(xVel, zVel) * Mathf.Rad2Deg;
+            float smoothedRotation = Mathf.LerpAngle(transform.localRotation.eulerAngles.y, rotZ, smoothing * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(new Vector3(0, smoothedRotation, 0));
+
+        }
+
+        
+    }
+    private void Weird()
+    {
+        if (xVel != 0 || zVel != 0)
+        {
+            if (sameSpeed)
+                this.transform.position += new Vector3(xVel, 0, zVel).normalized * (spd * Time.deltaTime);
+            if (!sameSpeed)
+                this.transform.position += new Vector3(xVel, 0, zVel) * (spd * Time.deltaTime);
+
+            float rotZ = Mathf.Atan2(xVel, zVel) * Mathf.Rad2Deg;
+
+
+            Vector3 smoothedRotation = Vector3.LerpUnclamped(transform.localRotation.eulerAngles, new Vector3(0, rotZ, 0), smoothing * Time.deltaTime);
+
+            transform.rotation = Quaternion.Euler(smoothedRotation);
+>>>>>>> e67b3ae6b70bb3ec4b99f0ea0b9d8a538652dc3a
             //Debug.Log(smoothedRotation);
         }
 
@@ -99,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
     private void Mouse_Dragging() 
     {
         Vector3 point = Vector3.zero;
+        float distance = 0f;
         //register mouse click
         if (Input.GetMouseButton(1))
         {
@@ -108,27 +135,28 @@ public class PlayerMovement : MonoBehaviour
             {
                 point = raycastHit.point;
                 point.y = 1.5f;
-                transform.position = point; //move to that point [Will change later]
+                distance = Mathf.Sqrt(Mathf.Pow(point.z - transform.position.z, 2) + Mathf.Pow(point.x - transform.position.x, 2));
+                transform.position = Vector3.Lerp(transform.position, point, (mouseSpeed/distance) * Time.deltaTime); //move to that point [Will change later]
+                transform.LookAt(point);
             }
             
             
         }
         //turn bee
-        transform.LookAt(point);
+        
 
 
         //move towards point
     }
-    private void Controller()  //Need more context
-    {
-        
-    }
-    private void Normal()
+    private void Controller()
     {
         if (sameSpeed)
             this.transform.position += new Vector3(xVel, 0, zVel).normalized * (spd * Time.deltaTime);
         if (!sameSpeed)
             this.transform.position += new Vector3(xVel, 0, zVel) * (spd * Time.deltaTime);
+        float rotZ = Mathf.Atan2(xVel, zVel) * Mathf.Rad2Deg;
+        float smoothedRotation = Mathf.LerpAngle(transform.localRotation.eulerAngles.y, rotZ, smoothing * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(new Vector3(0, smoothedRotation, 0));
     }
     private float CircleLerp(float angle1, float angle2, float smoothing)
     {

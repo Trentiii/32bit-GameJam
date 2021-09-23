@@ -109,11 +109,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51624cab1fc672c41a5526efbfa64053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementMode: 2
+  MovementMode: 1
   layerMask:
     serializedVersion: 2
     m_Bits: 256
   sameSpeed: 1
+  mouseSpeed: 5
+  smoothing: 8
 --- !u!54 &909071872487995941
 Rigidbody:
   m_ObjectHideFlags: 0
