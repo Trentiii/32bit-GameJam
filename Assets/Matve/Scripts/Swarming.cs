@@ -9,6 +9,7 @@ public class Swarming : MonoBehaviour
     public bool swarmActive;
     public int spawnCount;
     public int spawnMax;
+    public bool randomSpawn;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +25,16 @@ public class Swarming : MonoBehaviour
         {
             if(spawnCount <= spawnMax)
             {
-                spawn();
-                spawnCount += spawnCount + 1;
+                spawnCount++;
+                if (randomSpawn)
+                {
+                    spawn();
+                }
+                else
+                {
+                    
+                }
+                
             }
             else
             {
@@ -40,8 +49,11 @@ public class Swarming : MonoBehaviour
     {
         for (int i = 0; i <= 2; i++)
         {
+            
             int spawnIndex = Random.Range(0, spawnPoints.Count);
             Instantiate(enemy, spawnPoints[spawnIndex].transform.position, transform.rotation);
         }
     }
+
+    
 }
