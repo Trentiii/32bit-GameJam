@@ -13,6 +13,9 @@ public class PlayerDeath : MonoBehaviour
     public float timer;
     public float respawntime;
     public GameObject player;
+
+    public GameObject enemyParent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,10 +45,19 @@ public class PlayerDeath : MonoBehaviour
             }
             if (timer >= respawntime)
             {
+
+                player.transform.position = checkpoint.transform.position;
+
+                for (int i = 0; i < enemyParent.transform.childCount; i++)
+                {
+                    enemyParent.transform.GetChild(i).GetComponent<DeathReset>().deathReseter();
+                }
+
                 playerDead = false;
                 timer = 0;
             }
-            player.transform.position = checkpoint.transform.position;
+
+            
         }
         else
         {

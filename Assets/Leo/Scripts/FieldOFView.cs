@@ -59,7 +59,7 @@ public class FieldOFView : MonoBehaviour
         else
         {
             //Debug.Log("Chase");
-            enemyScript.chasing = true;
+            enemyScript.chasing = false;
         }
 
     }
