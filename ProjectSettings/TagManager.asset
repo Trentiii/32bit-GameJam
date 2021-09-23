@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags: 
+  - Enemy
+  - Wall
+  - Checkpoint
+  - IMG1
+  - IMG2
+  - HidingSpot
+  - IND3
+  - IND4
   layers:
   - Default
   - TransparentFX
