@@ -69,30 +69,8 @@ public class PlayerMovement : MonoBehaviour
                 this.transform.position += new Vector3(xVel, 0, zVel).normalized * (spd * Time.deltaTime);
             if (!sameSpeed)
                 this.transform.position += new Vector3(xVel, 0, zVel) * (spd * Time.deltaTime);
-
-<<<<<<< HEAD
-
-            //Quaternion.LookRotation(new Vector3(0, zVel, 0));
-
-            /*
-            float rotZ = Mathf.Atan2(xVel, zVel) * Mathf.Rad2Deg;
             
-            float newRotZ = rotZ;
-            if (rotZ / Mathf.Abs(rotZ) == -1)
-            {
-                newRotZ = 360 + rotZ;
-            }
-            float dif = 360 - newRotZ;
-            if(dif < 180)
-            {
 
-            }
-            */
-            //Vector3 smoothedRotation = Vector3.Slerp(currentRotation, new Vector3(0, newRotZ, 0), smoothing * Time.deltaTime);
-
-            Vector3 cR = transform.localRotation.eulerAngles;
-            transform.rotation = Quaternion.Lerp(Quaternion.LookRotation(cR), Quaternion.LookRotation(new Vector3(0, zVel, 0)), smoothing * Time.deltaTime);
-=======
             float rotZ = Mathf.Atan2(xVel, zVel) * Mathf.Rad2Deg;
             float smoothedRotation = Mathf.LerpAngle(transform.localRotation.eulerAngles.y, rotZ, smoothing * Time.deltaTime);
             transform.rotation = Quaternion.Euler(new Vector3(0, smoothedRotation, 0));
@@ -116,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 smoothedRotation = Vector3.LerpUnclamped(transform.localRotation.eulerAngles, new Vector3(0, rotZ, 0), smoothing * Time.deltaTime);
 
             transform.rotation = Quaternion.Euler(smoothedRotation);
->>>>>>> e67b3ae6b70bb3ec4b99f0ea0b9d8a538652dc3a
+
             //Debug.Log(smoothedRotation);
         }
 
