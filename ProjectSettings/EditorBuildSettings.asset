@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Thomas/startMenu.unity
+    guid: 2380189590619cf4aa98b575bca83293
   m_configObjects: {}
