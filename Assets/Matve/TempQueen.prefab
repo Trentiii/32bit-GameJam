@@ -196,8 +196,8 @@ GameObject:
   m_Component:
   - component: {fileID: 197505222726672602}
   - component: {fileID: 2730257653120500739}
-  - component: {fileID: 2730257653120500737}
-  - component: {fileID: 2730257653120500736}
+  - component: {fileID: 1780224571}
+  - component: {fileID: 1780224572}
   m_Layer: 0
   m_Name: TempQueen
   m_TagString: Untagged
@@ -232,8 +232,8 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.56, y: 1, z: 2.68}
-  m_Center: {x: 0, y: 0.76, z: -2.08}
---- !u!114 &2730257653120500737
+  m_Center: {x: 0, y: 0.76, z: 3}
+--- !u!114 &1780224571
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -242,15 +242,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 217232294401255918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97b58ca1a160ff04ea80a6fd64a1acef, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b214fed33d6fcd4b81f94b1b3d4058f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 217232294401255918}
+  enemy: {fileID: 0}
   inRange: 0
-  indicator: {fileID: 0}
+  indicator: {fileID: 217232294401255918}
   nonIND: {fileID: 0}
-  ED: {fileID: 2730257653120500736}
---- !u!114 &2730257653120500736
+  AW: {fileID: 1780224572}
+--- !u!114 &1780224572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -259,11 +259,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 217232294401255918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b457b5a62e53dcc479950a6887724ad7, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f341924d69f5f34996c473a2bfbaa04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
-  modelDead: {fileID: 4076823046203196655, guid: 95f3147d144433840adda627c58a2a84,
+  modelDead: {fileID: 6575457907734444936, guid: 5481591ca4cfded4782beca0d30b2deb,
+    type: 3}
+  winScreen: {fileID: 2855070912469552053, guid: ee845bcc6530d5142a2b058e67f77a7f,
     type: 3}
 --- !u!1 &779840707041741994
 GameObject:

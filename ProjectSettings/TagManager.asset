@@ -3,15 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: 
-  - Enemy
-  - Wall
-  - Checkpoint
+  tags:
+  - IND3
   - IMG1
+  - IND4
   - IMG2
   - HidingSpot
-  - IND3
-  - IND4
+  - Checkpoint
+  - SpawnM
+  - SpawnPoints
   layers:
   - Default
   - TransparentFX
