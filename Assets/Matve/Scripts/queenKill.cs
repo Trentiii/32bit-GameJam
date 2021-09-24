@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BodyDisposal : MonoBehaviour
+public class queenKill : MonoBehaviour
 {
+    public GameObject enemy;
+    public bool inRange;
     public GameObject indicator;
     public GameObject nonIND;
-    public bool inRange;
+    public altWin AW;
 
-    GameObject player;
-
-    // Start is called before the first frame update
     private void Start()
     {
-        player = GameObject.Find("Player");
-
         indicator = GameObject.FindWithTag("IMG1");
         nonIND = GameObject.FindWithTag("IMG2");
     }
@@ -28,15 +25,14 @@ public class BodyDisposal : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
 
-                
-                
+                AW.isDead = true;
+
                 nonIND.SetActive(true);
-                Destroy(gameObject);
             }
         }
-        else if(Vector3.Distance(transform.position, player.transform.position) < 5)
+        else
         {
-            
+
             nonIND.SetActive(true);
         }
 
