@@ -4,6 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Enemy
+  - Wall
+  - Checkpoint
   - IND3
   - IMG1
   - IND4

@@ -14,9 +14,10 @@ public class PlayerMovement : MonoBehaviour
     private float zVel = 0f;
     private float oldZVel = 0f;
     private float oldXVEL = 0f;
-    private float spd  = 5f;
+    [SerializeField]private float spd  = 5f;
+    [SerializeField]private float mouseDragHeight  = 5f;
     public float smoothing = 3f;
-
+    [SerializeField]private Camera mainCamera;
     
 
     // Start is called before the first frame update
@@ -106,11 +107,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButton(1))
         {
             //Get world position of mouse
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask))
             {
+                Debug.Log("Name of obj: " + raycastHit.collider.gameObject);
                 point = raycastHit.point;
-                point.y = 1.5f;
+                point.y = mouseDragHeight;
                 distance = Mathf.Sqrt(Mathf.Pow(point.z - transform.position.z, 2) + Mathf.Pow(point.x - transform.position.x, 2));
                 transform.position = Vector3.Lerp(transform.position, point, (mouseSpeed/distance) * Time.deltaTime); //move to that point [Will change later]
                 transform.LookAt(point);

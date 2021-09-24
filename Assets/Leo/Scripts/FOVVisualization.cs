@@ -21,14 +21,17 @@ public class FOVVisualization : MonoBehaviour
 
 	public MeshFilter viewMeshFilter;
 	Mesh viewMesh;
+	public Material mat1;
+	public Material mat2;
+	public GameObject obj;
+	private FieldOFView fovScript;
 
 	void Start()
 	{
 		viewMesh = new Mesh();
 		viewMesh.name = "View Mesh";
 		viewMeshFilter.mesh = viewMesh;
-
-	
+		fovScript = gameObject.GetComponent<FieldOFView>();
 
 		//StartCoroutine("FindTargetsWithDelay", .2f);
 	}
@@ -46,6 +49,14 @@ public class FOVVisualization : MonoBehaviour
 	void LateUpdate()
 	{
 		DrawFieldOfView();
+		if (fovScript.sighted == true)
+        {
+			obj.GetComponent<MeshRenderer>().material = mat1;
+        }
+        else
+        {
+			obj.GetComponent<MeshRenderer>().material = mat2;
+		}
 	}
 
 	/*void FindVisibleTargets()
