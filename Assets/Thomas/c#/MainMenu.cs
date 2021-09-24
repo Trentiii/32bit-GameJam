@@ -21,7 +21,11 @@ public class MainMenu : MonoBehaviour
         //SceneManager.LoadScene(1);
         Debug.Log("credits?");
     }
-
+    public void MainMenuLoad()
+    {
+        SceneManager.LoadScene(0);
+        Debug.Log("credits?");
+    }
 
 
 }
