@@ -6,12 +6,18 @@ public class Hiding : MonoBehaviour
 {
     public bool isHiding;
     public bool canHide;
-    public GameObject IND3;
-    public GameObject IND4;
+    GameObject IND3;
+    GameObject IND4;
     public GameObject playerModel;
-    public PlayerMovement PM;
-    public PlayerDeath PD;
-    public CharacterController CC;
+    PlayerMovement PM;
+    PlayerDeath PD;
+    CharacterController CC;
+    ParticleSystem ps;
+
+    Transform hidingSpot;
+    Vector3 oldPos;
+    Quaternion oldRot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +27,7 @@ public class Hiding : MonoBehaviour
         PM = gameObject.GetComponent<PlayerMovement>();
         PD = gameObject.GetComponent<PlayerDeath>();
         CC = gameObject.GetComponent<CharacterController>();
+        ps = transform.GetChild(3).GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -30,15 +37,23 @@ public class Hiding : MonoBehaviour
         {
             IND3.SetActive(true);
             IND4.SetActive(false);
-            if(Input.GetKeyDown(KeyCode.F))
+            if(Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Space))
             {
                 if (!isHiding)
                 {
                     isHiding = true;
+                    ps.Play();
+
+                    oldPos = transform.position;
+                    oldRot = transform.rotation;
                 }
                 else
                 {
                     isHiding = false;
+                    ps.Play();
+
+                    transform.position = oldPos;
+                    transform.rotation = oldRot;
                 }
                 
             }
@@ -55,24 +70,27 @@ public class Hiding : MonoBehaviour
         if (isHiding)
         {
             PD.enabled = false;
-            playerModel.SetActive(false);
+            transform.position = new Vector3(hidingSpot.position.x, hidingSpot.position.y, hidingSpot.position.z);
+            transform.rotation = Quaternion.Euler(-hidingSpot.rotation.eulerAngles.x, hidingSpot.rotation.eulerAngles.y - 180, hidingSpot.rotation.eulerAngles.z);
             PM.enabled = false;
             CC.enabled = false;
         }
         else
         {
             PD.enabled = true;
-            playerModel.SetActive(true);
             PM.enabled = true;
             CC.enabled = true;
         }
         
     }
 
+    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "HidingSpot")
         {
+            hidingSpot = other.transform.parent;
             canHide = true;
         }
     }

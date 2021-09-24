@@ -11,14 +11,15 @@ public class FieldOFView : MonoBehaviour
     public Camera cam;
     private Plane[] planes;
     private EnemyPatrol enemyScript;
-
-
+    Hiding h;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         PlayerColl = player.GetComponent<Collider>();
+
+        h = player.GetComponent<Hiding>();
 
         enemyScript = gameObject.GetComponent<EnemyPatrol>();
     }
@@ -51,7 +52,7 @@ public class FieldOFView : MonoBehaviour
 
         
 
-        if (Physics.Raycast(cam.transform.position, -(cam.transform.position - player.transform.position), out hit, 10))
+        if (!h.isHiding && Physics.Raycast(cam.transform.position, -(cam.transform.position - player.transform.position), out hit, 10))
         {
             if (hit.collider.gameObject.tag != "Wall")
             {
