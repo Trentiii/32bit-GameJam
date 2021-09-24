@@ -26,27 +26,30 @@ public class AltSpawn2 : MonoBehaviour
     {
         if (spawning)
         {
-            if(spawnA < spawnM)
+            canSpawn = true;
+            //if(spawnA < spawnM)
+            // {
+
+
+            //canSpawn = true;
+            if (timer <= endTime)
             {
-                
-                if(timer <= endTime)
-                {
-                    timer += Time.deltaTime;
-                    canSpawn = false;
-                }
-                else
-                {
-                    spawnA += 1;
-                    timer = 0;
-                    canSpawn = true;
-                }
-            }
-            else
-            {
+                timer += Time.deltaTime;
                 canSpawn = false;
-                spawning = false;
-                spawnA = 0;
-            }
+             }
+             else
+             {
+               
+                
+                
+             }
+            //}
+            // else
+            // {
+            //     canSpawn = false;
+            //     spawning = false;
+            //     spawnA = 0;
+            // }
         }
 
         if (canSpawn)
