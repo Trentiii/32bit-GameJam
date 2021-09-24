@@ -12,6 +12,7 @@ public class FieldOFView : MonoBehaviour
     private Plane[] planes;
     private EnemyPatrol enemyScript;
     Hiding h;
+    public bool sighted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,12 +44,12 @@ public class FieldOFView : MonoBehaviour
     {
         RaycastHit hit;
 
-
+        //Debug.Log("Check for Player");
         //Debug.DrawLine(cam.transform.position, Vector3.RotateTowards(cam.transform.position, player.transform.position, Mathf.Deg2Rad * 30, 0), Color.green);
 
         Debug.DrawRay(cam.transform.position, -(cam.transform.position - player.transform.position), Color.green);
 
-        Vector3.RotateTowards(cam.transform.position, player.transform.position, Mathf.Deg2Rad * 30, 0);
+        Vector3.RotateTowards(cam.transform.position, player.transform.position, Mathf.Deg2Rad * 360, 0);
 
         
 
@@ -56,16 +57,24 @@ public class FieldOFView : MonoBehaviour
         {
             if (hit.collider.gameObject.tag != "Wall")
             {
-                //Debug.Log("Chase");
+                Debug.Log("Chase");
                 enemyScript.chasing = true;
+                sighted = true;
+            }
+            else
+            {
+                Debug.Log("Chase2");
+                enemyScript.chasing = true;
+                sighted = true;
             }
 
 
         }
         else
         {
-            //Debug.Log("Chase");
+            Debug.Log("Don't Chase");
             enemyScript.chasing = false;
+            sighted = false;
         }
 
     }
