@@ -10,7 +10,6 @@ public class altWin : MonoBehaviour
     void Start()
     {
         isDead = false;
-        winScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -18,8 +17,8 @@ public class altWin : MonoBehaviour
     {
         if (isDead)
         {
-            Instantiate(modelDead, gameObject.transform.position, Quaternion.identity);
-            winScreen.SetActive(true);
+            Instantiate(modelDead, gameObject.transform.position, gameObject.transform.rotation);
+            Instantiate(winScreen);
             Destroy(gameObject);
         }
     }
