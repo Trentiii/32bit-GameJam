@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     public static bool paused = false;
 
     HexaSpinGrow hsg;
+    [SerializeField] GameObject tutorialScreen;
 
     private void Awake()
     {
@@ -45,5 +46,10 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
         
+    }
+
+    public void OpenTutorial()
+    {
+        tutorialScreen.SetActive(true);
     }
 }
