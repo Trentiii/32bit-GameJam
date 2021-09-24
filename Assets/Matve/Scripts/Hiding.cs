@@ -11,7 +11,7 @@ public class Hiding : MonoBehaviour
     public GameObject playerModel;
     PlayerMovement PM;
     PlayerDeath PD;
-    CharacterController CC;
+    Collider CC;
     ParticleSystem ps;
 
     Transform hidingSpot;
@@ -26,7 +26,7 @@ public class Hiding : MonoBehaviour
         IND4 = GameObject.FindWithTag("IND4");
         PM = gameObject.GetComponent<PlayerMovement>();
         PD = gameObject.GetComponent<PlayerDeath>();
-        CC = gameObject.GetComponent<CharacterController>();
+        CC = gameObject.GetComponent<Collider>();
         ps = transform.GetChild(3).GetComponent<ParticleSystem>();
     }
 
@@ -54,11 +54,8 @@ public class Hiding : MonoBehaviour
 
                     transform.position = oldPos;
                     transform.rotation = oldRot;
-                }
-                
+                }               
             }
-
-
         }
         else
         {
@@ -70,10 +67,11 @@ public class Hiding : MonoBehaviour
         if (isHiding)
         {
             PD.enabled = false;
-            transform.position = new Vector3(hidingSpot.position.x, hidingSpot.position.y, hidingSpot.position.z);
-            transform.rotation = Quaternion.Euler(-hidingSpot.rotation.eulerAngles.x, hidingSpot.rotation.eulerAngles.y - 180, hidingSpot.rotation.eulerAngles.z);
             PM.enabled = false;
             CC.enabled = false;
+            transform.position = new Vector3(hidingSpot.position.x, hidingSpot.position.y, hidingSpot.position.z);
+            transform.rotation = Quaternion.Euler(-hidingSpot.rotation.eulerAngles.x, hidingSpot.rotation.eulerAngles.y - 180, hidingSpot.rotation.eulerAngles.z);
+
         }
         else
         {
@@ -81,7 +79,6 @@ public class Hiding : MonoBehaviour
             PM.enabled = true;
             CC.enabled = true;
         }
-        
     }
 
     
