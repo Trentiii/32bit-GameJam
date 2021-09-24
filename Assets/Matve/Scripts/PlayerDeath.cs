@@ -15,6 +15,7 @@ public class PlayerDeath : MonoBehaviour
     public GameObject player;
 
     public GameObject enemyParent;
+    public GameObject deathEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -34,10 +35,11 @@ public class PlayerDeath : MonoBehaviour
 
         if (playerDead)
         {
-            
+
+            deathEffect.SetActive(true);
             PM.enabled = false;
             model1.SetActive(false);
-            model2.SetActive(true);
+            //model2.SetActive(true);
             
             if (timer <= respawntime)
             {
@@ -47,6 +49,7 @@ public class PlayerDeath : MonoBehaviour
             {
 
                 player.transform.position = checkpoint.transform.position;
+                deathEffect.SetActive(false);
 
                 for (int i = 0; i < enemyParent.transform.childCount; i++)
                 {

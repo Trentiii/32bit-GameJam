@@ -7,9 +7,14 @@ public class BodyDisposal : MonoBehaviour
     public GameObject indicator;
     public GameObject nonIND;
     public bool inRange;
+
+    GameObject player;
+
     // Start is called before the first frame update
     private void Start()
     {
+        player = GameObject.Find("Player");
+
         indicator = GameObject.FindWithTag("IMG1");
         nonIND = GameObject.FindWithTag("IMG2");
     }
@@ -29,7 +34,7 @@ public class BodyDisposal : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else
+        else if(Vector3.Distance(transform.position, player.transform.position) < 5)
         {
             
             nonIND.SetActive(true);

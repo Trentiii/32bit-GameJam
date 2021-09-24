@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class FieldOFView : MonoBehaviour
 {
+    [HideInInspector]
     public GameObject player;
+    [HideInInspector]
     public Collider PlayerColl;
     public Camera cam;
     private Plane[] planes;
@@ -15,6 +17,9 @@ public class FieldOFView : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
+        PlayerColl = player.GetComponent<Collider>();
+
         enemyScript = gameObject.GetComponent<EnemyPatrol>();
     }
 

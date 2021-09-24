@@ -10,16 +10,21 @@ public class PlayerAttack : MonoBehaviour
     public GameObject indicator;
     public GameObject nonIND;
     public enemyDies ED;
+    public PlayerDeath pd;
+
+    GameObject player;
 
     private void Start()
     {
+        player = GameObject.Find("Player");
+        pd = player.GetComponent<PlayerDeath>();
+
         indicator = GameObject.FindWithTag("IMG1");
         nonIND = GameObject.FindWithTag("IMG2");
     }
     private void Update()
     {
-
-        if (inRange)
+        if (inRange && !pd.playerDead)
         {
             indicator.SetActive(true);
             nonIND.SetActive(false);
@@ -31,13 +36,10 @@ public class PlayerAttack : MonoBehaviour
                 nonIND.SetActive(true);
             }
         }
-        else
-        {
-            
+        else if(pd.playerDead || Vector3.Distance(transform.position, player.transform.position) < 5)
+        {   
             nonIND.SetActive(true);
         }
-        
-        
     }
 
     private void OnTriggerEnter(Collider other)

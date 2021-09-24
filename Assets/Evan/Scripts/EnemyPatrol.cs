@@ -6,12 +6,17 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyPatrol : MonoBehaviour
 {
-
+    [Header("Partol Points")]
     [SerializeField]
+    int wantedChildIndex = 0;
+
+    Transform patrolPointParentParent;
     Transform patrolPointParent;
+
 
     GameObject[] patrolPoint; //Holds all patrol points
 
+    [Header("Movement Mode (Pick one)")]
     [SerializeField]
     [Tooltip("If true moves back and forth through the point array")]
     bool backForthMovement = true;
@@ -20,8 +25,10 @@ public class EnemyPatrol : MonoBehaviour
     [Tooltip("Moves through the aray 0 to max repeatedly")]
     bool circleMovement = false;
 
+    [HideInInspector]
     public Transform player;
 
+    [Header("Misc.")]
     //[HideInInspector]
     public bool chasing = false;
 
@@ -35,6 +42,9 @@ public class EnemyPatrol : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player").transform;
+        patrolPointParentParent = GameObject.Find("PatrolPointParent").transform;
+        patrolPointParent = patrolPointParentParent.GetChild(wantedChildIndex);
 
         SetPatrolPoints();
 
@@ -51,7 +61,6 @@ public class EnemyPatrol : MonoBehaviour
             Debug.LogError("To many movement modes selected");
         }
 
-        
     }
 
     // Update is called once per frame
