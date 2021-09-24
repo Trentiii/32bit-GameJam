@@ -7,6 +7,9 @@ public class ActivateSpawn : MonoBehaviour
     public EnemyPatrol EP;
     public AltSpawn2 AS2;
     public GameObject spawnManager;
+    public bool thething;
+    public float timer;
+    public float coolDown;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,10 @@ public class ActivateSpawn : MonoBehaviour
     {
         if (EP.chasing)
         {
-            AS2.spawning = true;
+            thething = true;
+
+
         }
+        
     }
 }
