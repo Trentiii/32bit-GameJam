@@ -25,7 +25,7 @@ public class BodyDisposal : MonoBehaviour
         {
             indicator.SetActive(true);
             nonIND.SetActive(false);
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
 
                 

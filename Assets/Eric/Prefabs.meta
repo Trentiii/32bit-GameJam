@@ -1,7 +1,12 @@
 fileFormatVersion: 2
-guid: 810a9e4907933c34f917976ec9699180
+<<<<<<< HEAD:Assets/Eric/Prefabs.meta
+guid: 1dfae4c1c9518a84aa690208c41bc98d
 folderAsset: yes
 DefaultImporter:
+=======
+guid: 74383da889f7ce248a7f5741b693587b
+PrefabImporter:
+>>>>>>> Swarming:Assets/Matve/Sphere.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

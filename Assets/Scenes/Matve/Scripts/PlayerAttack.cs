@@ -28,7 +28,7 @@ public class PlayerAttack : MonoBehaviour
         {
             indicator.SetActive(true);
             nonIND.SetActive(false);
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 
                 ED.isDead = true;
