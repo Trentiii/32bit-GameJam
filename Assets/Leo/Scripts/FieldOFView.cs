@@ -49,31 +49,33 @@ public class FieldOFView : MonoBehaviour
 
         Debug.DrawRay(cam.transform.position, -(cam.transform.position - player.transform.position), Color.green);
 
-        Vector3.RotateTowards(cam.transform.position, player.transform.position, Mathf.Deg2Rad * 360, 0);
+        Vector3.RotateTowards(cam.transform.position, player.transform.position, Mathf.Deg2Rad * 60, 0);
 
         
 
         if (!h.isHiding && Physics.Raycast(cam.transform.position, -(cam.transform.position - player.transform.position), out hit, 14))
         {
-            Debug.Log(-(cam.transform.position - player.transform.position));
+            //Debug.Log(-(cam.transform.position - player.transform.position));
+            //Debug.Log("Chase");
+
             if (hit.collider.gameObject.tag != "Wall")
             {
-                //Debug.Log("Chase");
+                Debug.Log("Chase");
                 enemyScript.chasing = true;
                 sighted = true;
             }
             else
             {
-                //Debug.Log("Chase2");
-                enemyScript.chasing = true;
-                sighted = true;
+                Debug.Log("Don't Chase");
+                enemyScript.chasing = false;
+                sighted = false;
             }
 
 
         }
         else
         {
-            //Debug.Log("Don't Chase");
+            Debug.Log("Don't Chase");
             enemyScript.chasing = false;
             sighted = false;
         }
