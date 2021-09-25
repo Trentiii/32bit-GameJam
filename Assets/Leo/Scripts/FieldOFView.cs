@@ -53,17 +53,18 @@ public class FieldOFView : MonoBehaviour
 
         
 
-        if (!h.isHiding && Physics.Raycast(cam.transform.position, -(cam.transform.position - player.transform.position), out hit, 10))
+        if (!h.isHiding && Physics.Raycast(cam.transform.position, -(cam.transform.position - player.transform.position), out hit, 14))
         {
+            Debug.Log(-(cam.transform.position - player.transform.position));
             if (hit.collider.gameObject.tag != "Wall")
             {
-                Debug.Log("Chase");
+                //Debug.Log("Chase");
                 enemyScript.chasing = true;
                 sighted = true;
             }
             else
             {
-                Debug.Log("Chase2");
+                //Debug.Log("Chase2");
                 enemyScript.chasing = true;
                 sighted = true;
             }
@@ -72,7 +73,7 @@ public class FieldOFView : MonoBehaviour
         }
         else
         {
-            Debug.Log("Don't Chase");
+            //Debug.Log("Don't Chase");
             enemyScript.chasing = false;
             sighted = false;
         }
