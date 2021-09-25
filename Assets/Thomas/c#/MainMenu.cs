@@ -5,11 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public PlayerDeath playerDeath;
+
     public void OpenTheGame()
     {
         SceneManager.LoadScene(1);
         Debug.Log("starting...");
     }
+
+    public void Retry()
+    {
+        playerDeath.timer = 10;
+        print("Reset 1");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
