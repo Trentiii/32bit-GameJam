@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour
     public static bool paused = false;
 
     HexaSpinGrow hsg;
-    [SerializeField] GameObject tutorialScreen;
+    [SerializeField] TutorialScript tutorialScript;
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !tutorialScript.gameObject.activeSelf)
         {
             if (paused)
             {
@@ -50,6 +50,7 @@ public class PauseMenu : MonoBehaviour
 
     public void OpenTutorial()
     {
-        tutorialScreen.SetActive(true);
+        tutorialScript.OpenTutorial();
+        hsg.spinShrinkStart();
     }
 }

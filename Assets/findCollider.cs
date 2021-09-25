@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FindShittyCollider : MonoBehaviour
+public class findCollider : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -10,14 +10,14 @@ public class FindShittyCollider : MonoBehaviour
         
     }
 
-    public void OnCollisionEnter(Collision collision)
-    {
-        print(collision.gameObject.name);
-    }
-
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject);
     }
 }
