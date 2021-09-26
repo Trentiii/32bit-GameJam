@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 67fa4e5ac3c1a3746a997f3264a967f5
+  - enabled: 1
+    path: Assets/Gavin/Scenes/QueenRoom.unity
+    guid: 73e08087970d71b4e95066c6fa8aff96
   m_configObjects: {}

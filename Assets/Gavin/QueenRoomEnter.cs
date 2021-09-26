@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class QueenRoomEnter : MonoBehaviour
 {
     bool canEnter;
@@ -22,7 +22,7 @@ public class QueenRoomEnter : MonoBehaviour
             {
                 if (canEnter)
                 {
-                    Debug.Log("YOU WIN");
+                    SceneManager.LoadScene(2);
                 }
             }
         }

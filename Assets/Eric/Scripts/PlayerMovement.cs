@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]private float mouseDragHeight  = 5f;
     public float smoothing = 3f;
     [SerializeField]private Camera mainCamera;
-    
+    [SerializeField] private bool flipDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
 
         xVel = Input.GetAxisRaw("Horizontal");
         zVel = Input.GetAxisRaw("Vertical");
+
+        xVel *= flipDirection ? -1 : 1;
+        zVel *= flipDirection ? -1 : 1;
 
         oldXVEL = xVel != 0  && zVel != 0 ? xVel : oldXVEL;
         oldZVel = zVel != 0 && xVel != 0 ? zVel : oldZVel;
