@@ -7,6 +7,8 @@ public class linkToHive : MonoBehaviour
     public GameObject SpawnM;
     public EnemyPatrol EP;
     public chaserBeeEngage cBE;
+    public int zone = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +22,11 @@ public class linkToHive : MonoBehaviour
     {
         if (EP.chasing)
         {
-            cBE.spotted = true;
+            cBE.spotted[zone] = true;
         }
         else
         {
-            cBE.spotted = false;
+            cBE.spotted[zone] = false;
         }
         
     }

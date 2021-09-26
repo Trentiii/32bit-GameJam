@@ -48,7 +48,7 @@ public class FieldOFView : MonoBehaviour
     {
         RaycastHit hit;
 
-        Debug.Log("Check for Player");
+        //Debug.Log("Check for Player");
         //Debug.DrawLine(cam.transform.position, Vector3.RotateTowards(cam.transform.position, player.transform.position, Mathf.Deg2Rad * 30, 0), Color.green);
 
         Debug.DrawRay(cam.transform.position, -(cam.transform.position - player.transform.position), Color.green);
@@ -61,7 +61,7 @@ public class FieldOFView : MonoBehaviour
         {
             //Debug.Log(-(cam.transform.position - player.transform.position));
 
-            Debug.Log(hit.collider.gameObject.name);
+            //Debug.Log(hit.collider.gameObject.name);
 
             if (hit.collider.gameObject.tag == "Player")
             {

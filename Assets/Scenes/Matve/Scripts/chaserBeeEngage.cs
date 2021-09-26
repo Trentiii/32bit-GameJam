@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class chaserBeeEngage : MonoBehaviour
 {
-    public bool spotted;
+    [HideInInspector]
+    public bool[] spotted = new bool[8];
     public GameObject[] chasers;
     Chaser[] chacha;
     // Start is called before the first frame update
@@ -23,12 +24,10 @@ public class chaserBeeEngage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spotted)
+        for (int i = 0; i < chacha.Length; i++)
         {
-            for (int i = 0; i < chacha.Length; i++)
-            {
-                chacha[i].chaseTime = 10;
-            }
-        }      
+            if (spotted[chacha[i].zone])
+                chacha[i].chaseTime = 8;
+        }
     }
 }

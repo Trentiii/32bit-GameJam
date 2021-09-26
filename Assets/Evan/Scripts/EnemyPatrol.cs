@@ -13,6 +13,11 @@ public class EnemyPatrol : MonoBehaviour
     Transform patrolPointParentParent;
     Transform patrolPointParent;
 
+    [SerializeField]
+    int currentPoint = 0; //Holds current wanted loop
+
+    [SerializeField]
+    bool firstHalf = true; //Holds if first half a patrol loop
 
     GameObject[] patrolPoint; //Holds all patrol points
 
@@ -32,9 +37,11 @@ public class EnemyPatrol : MonoBehaviour
     //[HideInInspector]
     public bool chasing = false;
 
+    [SerializeField]
+    bool drone = false;
+
     bool resetNeeded = false; //Holds if patrol reset is needed
-    bool firstHalf = true; //Holds if frist half a patrol loop
-    int currentPoint = 0; //Holds current wanted loop
+    
 
     //Referencess
     NavMeshAgent navA;
@@ -69,12 +76,37 @@ public class EnemyPatrol : MonoBehaviour
         //If chasing
         if (chasing)
         {
+            if (drone)
+            {
+
+                navA.speed = 0;
+
+                Vector3 direction = (player.transform.position - transform.position).normalized;
+
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
+
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 3);
+            }
+            else
+            {
+                navA.speed = 6.3f;
+            }
+
             //Set destintation to player
             navA.destination = player.position;
             resetNeeded = true;
         }
         else
         {
+            if (drone)
+            {
+                navA.speed = 3.5f;
+            }
+            else
+            {
+                navA.speed = 5.8f;
+            }
+
             //If reset needeed
             if (resetNeeded)
             {

@@ -11,6 +11,8 @@ public class DeathReset : MonoBehaviour
 
     EnemyPatrol ep;
     enemyDies ed;
+    PlayerAttack pa;
+    Chaser c;
 
     GameObject indicator;
     GameObject nonIND;
@@ -21,8 +23,10 @@ public class DeathReset : MonoBehaviour
         startPos = transform.position;
         startRot = transform.rotation;
 
+        pa = GetComponent<PlayerAttack>();
         ep = GetComponent<EnemyPatrol>();
         ed = GetComponent<enemyDies>();
+        c = GetComponent<Chaser>();
 
         indicator = GameObject.FindWithTag("IMG1");
         nonIND = GameObject.FindWithTag("IMG2");
@@ -32,13 +36,17 @@ public class DeathReset : MonoBehaviour
     {
         GetComponent<BoxCollider>().enabled = true;
         GetComponent<NavMeshAgent>().enabled = true;
-        GetComponent<FieldOFView>().enabled = true;
-        GetComponent<FOVVisualization>().enabled = true;
-        GetComponent<EnemyPatrol>().enabled = true;
 
-        transform.GetChild(0).gameObject.SetActive(true);
-        transform.GetChild(1).gameObject.SetActive(true);
-        transform.GetChild(2).gameObject.SetActive(true);
+        if (c == null)
+        {
+            GetComponent<FieldOFView>().enabled = true;
+            GetComponent<FOVVisualization>().enabled = true;
+            GetComponent<EnemyPatrol>().enabled = true;
+
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(1).gameObject.SetActive(true);
+            transform.GetChild(2).gameObject.SetActive(true);
+        }
 
         if (ed.isDead)
         {
@@ -47,13 +55,23 @@ public class DeathReset : MonoBehaviour
             Destroy(ed.body);
             ed.deathEffect.SetActive(false);
 
-            ep.enabled = true;
+            if(ep != null)
+                ep.enabled = true;
         }
 
         transform.position = startPos;
         transform.rotation = startRot;
 
-        ep.chasing = false;
+        if (ep != null)
+        {
+            ep.chasing = false;
+            pa.inRange = false;
+        }
+
+        if (c != null)
+        {
+            c.chaseTime = 0;
+        }
 
         indicator.SetActive(true);
         nonIND.SetActive(true);

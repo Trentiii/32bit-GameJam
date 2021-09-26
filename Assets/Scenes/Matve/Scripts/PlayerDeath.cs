@@ -22,7 +22,6 @@ public class PlayerDeath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         PM = GetComponent<PlayerMovement>();
         playerDead = false;
     }
@@ -57,6 +56,20 @@ public class PlayerDeath : MonoBehaviour
                 for (int i = 0; i < enemyParent.transform.childCount; i++)
                 {
                     enemyParent.transform.GetChild(i).GetComponent<DeathReset>().deathReseter();
+                }
+
+                GameObject[] chasers = GameObject.FindGameObjectsWithTag("ChaserBee");
+
+                for (int i = 0; i < chasers.Length; i++)
+                {
+                    chasers[i].GetComponent<DeathReset>().deathReseter();
+                }
+
+                GameObject[] bodies = GameObject.FindGameObjectsWithTag("Body");
+
+                for (int i = 0; i < bodies.Length; i++)
+                {
+                    Destroy(bodies[i]);
                 }
 
                 playerDead = false;
