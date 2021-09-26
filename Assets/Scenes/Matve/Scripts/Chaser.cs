@@ -8,21 +8,26 @@ public class Chaser : MonoBehaviour
     NavMeshAgent NavA;
     Transform player;
     PlayerDeath PD;
+    GameObject spawner;
     public Transform home;
-    public bool active;
+    public float chaseTime;
+    chaserBeeEngage cbe;
     // Start is called before the first frame update
     void Start()
     {
         PD = GameObject.Find("Player").GetComponent<PlayerDeath>();
         NavA = GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player").transform;
+        spawner = GameObject.Find("SpawnManager");
+        cbe = spawner.GetComponent<chaserBeeEngage>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (active)
+        if (chaseTime > 0)
         {
+            chaseTime -= Time.deltaTime;
             NavA.destination = player.position;
         }
         else
@@ -32,7 +37,8 @@ public class Chaser : MonoBehaviour
 
         if (PD.playerDead)
         {
-            active = false;
+            chaseTime = 0;
+            cbe.spotted = false;
             gameObject.transform.position = home.transform.position;
         }
     }
