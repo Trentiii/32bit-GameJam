@@ -37187,8 +37187,18 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9c718a3f854c83245b31ddb750d82bfb, type: 2}
     - target: {fileID: -4610462237217057681, guid: 9376f7b13cc0fc04eae2a4e4f3344d73,
         type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: -4610462237217057681, guid: 9376f7b13cc0fc04eae2a4e4f3344d73,
+        type: 3}
       propertyPath: m_LocalPosition.y
       value: -3.41
+      objectReference: {fileID: 0}
+    - target: {fileID: -4610462237217057681, guid: 9376f7b13cc0fc04eae2a4e4f3344d73,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: -4609338094378848698, guid: 9376f7b13cc0fc04eae2a4e4f3344d73,
         type: 3}
@@ -99861,6 +99871,7 @@ MonoBehaviour:
   mouseDragHeight: 5
   smoothing: 3
   mainCamera: {fileID: 0}
+  flipDirection: 0
 --- !u!1 &1944248846 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6301881673906113259, guid: 82a38d853ef5dc4429532c9d193b6aff,
