@@ -47,6 +47,8 @@ public class PlayerAttack : MonoBehaviour
         if(other.tag == "Player")
         {
             inRange = true;
+            indicator.SetActive(true);
+            nonIND.SetActive(false);
         }
         
     }
@@ -56,6 +58,8 @@ public class PlayerAttack : MonoBehaviour
         if(other.tag == "Player")
         {
             inRange = false;
+            nonIND.SetActive(true);
+
         }
     }
 }

@@ -48,6 +48,8 @@ public class BodyDisposal : MonoBehaviour
         if (other.tag == "Player")
         {
             inRange = true;
+            indicator.SetActive(true);
+            nonIND.SetActive(false);
         }
 
     }
@@ -57,6 +59,7 @@ public class BodyDisposal : MonoBehaviour
         if (other.tag == "Player")
         {
             inRange = false;
+            nonIND.SetActive(true);
         }
     }
 }

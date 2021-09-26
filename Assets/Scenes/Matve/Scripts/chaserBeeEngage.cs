@@ -27,7 +27,9 @@ public class chaserBeeEngage : MonoBehaviour
         for (int i = 0; i < chacha.Length; i++)
         {
             if (spotted[chacha[i].zone])
+            {
                 chacha[i].chaseTime = 8;
+            }
         }
     }
 }

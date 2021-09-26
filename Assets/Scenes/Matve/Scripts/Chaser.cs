@@ -47,13 +47,21 @@ public class Chaser : MonoBehaviour
         }
         else if (chaseTime > 0 && h.isHiding)
         {
-            bc.enabled = true;
+            NavA.destination = home.position;
+
+            bc.enabled = false;
+
+            currentSpeed = speed;
+            NavA.speed = currentSpeed;
+
+            if ((NavA.destination - transform.position).magnitude < 0.1f)
+            {
+                gameObject.transform.position = home.transform.position;
+
+                transform.rotation = Quaternion.Slerp(transform.rotation, home.transform.rotation, Time.deltaTime * 3);
+            }
 
             chaseTime -= Time.deltaTime;
-            NavA.destination = player.position;
-
-            currentSpeed -= 4 * Time.deltaTime;
-            NavA.speed = currentSpeed;
         }
         else
         {
