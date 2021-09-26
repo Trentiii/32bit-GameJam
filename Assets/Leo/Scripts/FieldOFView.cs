@@ -14,6 +14,8 @@ public class FieldOFView : MonoBehaviour
     Hiding h;
     public bool sighted = false;
 
+    public LayerMask mask;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,9 @@ public class FieldOFView : MonoBehaviour
         }
         else
         {
-
+            //Debug.Log("Don't Chase");
+            enemyScript.chasing = false;
+            sighted = false;
         }
     }
 
@@ -44,7 +48,7 @@ public class FieldOFView : MonoBehaviour
     {
         RaycastHit hit;
 
-        //Debug.Log("Check for Player");
+        Debug.Log("Check for Player");
         //Debug.DrawLine(cam.transform.position, Vector3.RotateTowards(cam.transform.position, player.transform.position, Mathf.Deg2Rad * 30, 0), Color.green);
 
         Debug.DrawRay(cam.transform.position, -(cam.transform.position - player.transform.position), Color.green);
@@ -53,26 +57,30 @@ public class FieldOFView : MonoBehaviour
 
         
 
-        if (!h.isHiding && Physics.Raycast(cam.transform.position, -(cam.transform.position - player.transform.position), out hit, 10))
+        if (!h.isHiding && Physics.Raycast(new Vector3(cam.transform.position.x, cam.transform.position.y + 0.5f, cam.transform.position.z), -(cam.transform.position - player.transform.position), out hit, 12, mask))
         {
-            if (hit.collider.gameObject.tag != "Wall")
+            //Debug.Log(-(cam.transform.position - player.transform.position));
+
+            Debug.Log(hit.collider.gameObject.name);
+
+            if (hit.collider.gameObject.tag == "Player")
             {
-                Debug.Log("Chase");
+                //Debug.Log("Chase");
                 enemyScript.chasing = true;
                 sighted = true;
             }
             else
             {
-                Debug.Log("Chase2");
-                enemyScript.chasing = true;
-                sighted = true;
+                //Debug.Log("Chase2");
+                enemyScript.chasing = false;
+                sighted = false;
             }
 
 
         }
         else
         {
-            Debug.Log("Don't Chase");
+            //Debug.Log("Don't Chase");
             enemyScript.chasing = false;
             sighted = false;
         }
