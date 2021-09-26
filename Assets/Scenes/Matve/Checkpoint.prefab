@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7197290676882274253}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: -6.29}
-  m_LocalScale: {x: 5.9150014, y: 1, z: 1}
+  m_LocalScale: {x: 25, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7197290676882274253}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -92,7 +92,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5122506344927172232
 MonoBehaviour:
@@ -109,3 +109,9 @@ MonoBehaviour:
   Cindicator: {fileID: 5552052909389260798, guid: c22114a8a9f856c47809f594e1a149f4,
     type: 3}
   player: {fileID: 0}
+  spawnPoint: 0
+  activated: 0
+  oneUse: 0
+  used: 0
+  timer: 0
+  maxTime: 30

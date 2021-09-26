@@ -16,6 +16,7 @@ TagManager:
   - SpawnM
   - SpawnPoints
   - QueenEnding
+  - ChaserBee
   layers:
   - Default
   - TransparentFX

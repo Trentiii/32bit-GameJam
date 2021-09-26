@@ -28,10 +28,11 @@ public class enemyDies : MonoBehaviour
         {
             stopped = true;
 
-            Instantiate(modelDead, gameObject.transform.position, Quaternion.identity);
+            Instantiate(modelDead, gameObject.transform.position, gameObject.transform.rotation);
 
             deathEffect.SetActive(true);
 
+            GetComponent<EnemyPatrol>().chasing = false;
             GetComponent<BoxCollider>().enabled = false;
             GetComponent<PlayerAttack>().enabled = false;
             GetComponent<NavMeshAgent>().enabled = false;
