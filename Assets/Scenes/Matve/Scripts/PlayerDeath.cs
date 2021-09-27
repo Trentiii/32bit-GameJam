@@ -19,16 +19,24 @@ public class PlayerDeath : MonoBehaviour
 
     public GameObject deathMenu;
 
+    public bool queen = false;
+
     // Start is called before the first frame update
     void Start()
     {
         PM = GetComponent<PlayerMovement>();
         playerDead = false;
+
+        if (queen)
+        {
+            checkpoint = GameObject.Find("SpawnPoint");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if(Input.GetKeyDown(KeyCode.J) && debugDeath)
         {
             playerDead = true;

@@ -10,6 +10,10 @@ public class BodyDisposal : MonoBehaviour
 
     GameObject player;
 
+    [Header("queen")]
+    public bool queen = false;
+    public GameObject deathblood;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -31,7 +35,17 @@ public class BodyDisposal : MonoBehaviour
                 
                 
                 nonIND.SetActive(true);
-                Destroy(gameObject);
+
+                if (queen)
+                {
+                    transform.GetChild(0).transform.eulerAngles = new Vector3(0, 0, 180);
+                    queenDeathEnding.started = true;
+                    deathblood.SetActive(true);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
         }
         else if(Vector3.Distance(transform.position, player.transform.position) < 5)

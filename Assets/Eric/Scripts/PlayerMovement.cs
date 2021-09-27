@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        transform.position = new Vector3(transform.position.x, -8.5f, transform.position.z);
 
         xVel = Input.GetAxisRaw("Horizontal");
         zVel = Input.GetAxisRaw("Vertical");
